@@ -32,3 +32,15 @@ def product_create(request):
     }
     return render(request,"products/product_create.html",context)
 
+def product_update(request, pk):
+    product=Product.objects.get(id=pk)
+    form=ProductFroms(request.POST or None, instance=product)
+    if request.method=="POST":
+        if form.is_valid():
+            form.save()
+            return redirect("/")
+    context={
+        "form":form
+    }
+    return render(request,"products/product_create.html",context)
+
