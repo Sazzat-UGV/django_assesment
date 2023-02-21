@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from myapps.views import print_response
+from myapps.views import print_response,product_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('print_response/', print_response),
+    path('', product_list),
 ]
